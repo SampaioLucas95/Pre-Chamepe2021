@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CoreAdmChamepe.Models.Context.Evento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eventos</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EventoDescricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventoData)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventoDataCadastro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventoLimitePessoas)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventoDescricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventoData)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventoDataCadastro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventoLimitePessoas)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.EventoId }) |
+            @Html.ActionLink("Detalhar", "Details", new { id=item.EventoId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.EventoId })
+        </td>
+    </tr>
+}
+
+</table>

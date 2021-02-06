@@ -1,0 +1,63 @@
+﻿@model CoreAdmChamepe.Models.Context.Evento
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Deseja realmente excluir?</h3>
+<div>
+    <h4>Evento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoDescricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoDescricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoData)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoData)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoDataCadastro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoDataCadastro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventoLimitePessoas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventoLimitePessoas)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Lista", "Index")
+        </div>
+    }
+</div>

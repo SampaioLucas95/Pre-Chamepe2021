@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CoreAdmChamepe.Models.Context.Igreja>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Cadastrar", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IgrejaDescricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IgrejaStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IgrejaPastorDescricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IgrejaContrato)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IgrejaSetor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IgrejaDataCadastro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IgrejaDescricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IgrejaStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IgrejaPastorDescricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IgrejaContrato)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IgrejaSetor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IgrejaDataCadastro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IgrejaId }) |
+            @Html.ActionLink("Detalhar", "Details", new { id=item.IgrejaId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.IgrejaId })
+        </td>
+    </tr>
+}
+
+</table>

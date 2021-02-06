@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CoreAdmChamepe.Models.Context.ParticipanteEvento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a href="@Url.Action("Index","Home")">
+    Cadastrar
+</a>
+
+
+<table class="table table-striped table-responsive">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.PartcipanteNomeCompleto)</th>
+            <th>@Html.DisplayNameFor(model => model.ParticipanteRg)</th>
+            <th>@Html.DisplayNameFor(model => model.ParticipanteEmail)</th>
+            <th>@Html.DisplayNameFor(model => model.ParticipanteTelefone)</th>
+            <th>@Html.DisplayNameFor(model => model.ParticipanteIdade)</th>
+            <th>@Html.DisplayNameFor(model => model.Evento.EventoDescricao)</th>
+            <th>@Html.DisplayNameFor(model => model.Igreja.IgrejaDescricao)</th>      
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.PartcipanteNomeCompleto</td>
+            <td>@item.ParticipanteRg</td>
+            <td>@item.ParticipanteEmail</td>
+            <td>@item.ParticipanteTelefone)</td>
+            <td>@item.ParticipanteIdade</td>
+            <td>@item.Evento.EventoDescricao</td>
+            <td>@item.Igreja.IgrejaDescricao</td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ParticipanteEventoId }) |
+                @Html.ActionLink("Detalhar", "Details", new { id = item.ParticipanteEventoId }) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.ParticipanteEventoId })
+            </td>
+        </tr>
+        }
+        <tr>
+            <td colspan="9"><strong>TOTAL GERAL DE INSCRITOS:</strong> @ViewBag.TotalGeralPessoasCadastradas</td>
+        </tr>
+        </tbody>    
+</table>

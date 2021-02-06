@@ -1,0 +1,81 @@
+﻿@model CoreAdmChamepe.Models.Context.ParticipanteEvento
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ParticipanteEvento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PartcipanteNomeCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartcipanteNomeCompleto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParticipanteRg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParticipanteRg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParticipanteEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParticipanteEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParticipanteTelefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParticipanteTelefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParticipanteIdade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParticipanteIdade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Evento.EventoDescricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evento.EventoDescricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Igreja.IgrejaDescricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Igreja.IgrejaDescricao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Lista", "Index")
+        </div>
+    }
+</div>

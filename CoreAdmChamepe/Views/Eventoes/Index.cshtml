@@ -1,0 +1,127 @@
+﻿@model IEnumerable<CoreAdmChamepe.Models.Context.Evento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eventos</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar", "Create")
+</p>
+
+<link href="~/Content/dataTables/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/dataTables/buttons.dataTables.min.css" rel="stylesheet" />
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EventoDescricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventoData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventoDataCadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventoLimitePessoas)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventoDescricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventoData)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventoDataCadastro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventoLimitePessoas)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.EventoId }) |
+                    @Html.ActionLink("Detalhar", "Details", new { id = item.EventoId }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.EventoId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@section Scripts{
+    <script src="~/Scripts/dataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/dataTables/buttons.flash.min.js"></script>
+
+    <script src="~/Scripts/dataTables/jszip.min.js"></script>
+    <script src="~/Scripts/dataTables/pdfmake.min.js"></script>
+    <script src="~/Scripts/dataTables/vfs_fonts.js"></script>
+    <script src="~/Scripts/dataTables/buttons.html5.min.js"></script>
+    <script src="~/Scripts/dataTables/buttons.print.min.js"></script>
+    <script>
+        $(function () {
+            $('table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: '<i class="fa fa-file-excel-o"></i> Excel',
+                        titleAttr: 'Exportar para Excel',
+                        exportOptions: {
+                            columns: ':not(:last-child)',
+                        }
+                    }, {
+                        extend: 'pdfHtml5',
+                        text: '<i class="fa fa-file-pdf-o"></i> PDF',
+                        titleAttr: 'PDF',
+                        exportOptions: {
+                            columns: ':not(:last-child)',
+                        },
+                    }],
+                "lengthMenu": 10,
+                "language": {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+                }
+            });
+        })
+
+    </script>
+}
