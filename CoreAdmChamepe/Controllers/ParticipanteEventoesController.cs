@@ -68,7 +68,7 @@ namespace CoreAdmChamepe.Controllers
             ViewBag.Evento = participanteEvento.EventoId;
             if (ModelState.IsValid)
             {                
-                if (db.Eventoes.Where(x => x.EventoId == participanteEvento.EventoId).FirstOrDefault().EventoLimitePessoas <= db.ParticipanteEventoes.Count())
+                if (db.Eventoes.Where(x => x.EventoId == participanteEvento.EventoId).FirstOrDefault().EventoLimitePessoas <= db.ParticipanteEventoes.Where(p => p.EventoId == participanteEvento.EventoId).ToList().Count())
                 {
                     ViewBag.error = "A quantidade de pessoas limite para o evento foi alcançada! Não é possivel cadastrar mais!";                     
                 }                
